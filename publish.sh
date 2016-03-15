@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -o errexit
-set -o xtrace
+set -o verbose
 
 GH_URL="https://${GH_TOKEN}@github.com/aseom/pelican-test.git"
 COMMIT_MSG="Publish via travis - Build #${TRAVIS_BUILD_NUMBER}"
@@ -13,10 +13,8 @@ git clone -b gh-pages ${GH_URL} publish
 
 cd publish
 git rm -rf .
-cp -r ../output .
-ls -AF --color .
+cp -r ../output/* .
 
 git add -A .
-git status
 git commit -m "${COMMIT_MSG}"
 git push origin gh-pages
