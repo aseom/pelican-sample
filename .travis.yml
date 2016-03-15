@@ -1,0 +1,15 @@
+language: python
+python:
+  - 3.4
+branches:
+  only:
+    - master
+env:
+  global:
+    - secure: "QNChrmUqLVwJqLE9t5kBUAZ+runZx0FMsq/h0fT5KlXHSBt3L88KlF7ObFMv2WDbRHSvYOr0rKeQ5vBV3xTVIRC2kBM6HHiikKVLhf4ezjPcNC+EKdpdK8juJCknuK15I116KnibyxJjUIK3cJRJb48EdPOjUfGsuxp+EicdR/Aj2IDWKgchdsju6p73Z+/CBmcy+QBEQDoJcJgs3R2RL5MVKemuLmpd9A62xzxM4dH0FXWVj7jLiuo7uoWK1oMorXuwGvzMULfBfsy3s/vyJoA9yRk/SXyDhn1E1n/maOPuJaDG8n3h8FHniqzXINumXMzcY7DFiot/3VbuOrjieTYBGGbBv11ReRNq9k0ebNUmZkFJTFvYxCFFIl0vKROV1McUfDnCZx+QlHK2iurnuLghtdlu2enmw1yWMFOpR6/0NEiRTaWIsOF6+3oDkIMiqlUyAuyK6fNNcORLaLR+07wqd6zqIJbGvlVe15D+dYBEqg8qyoyd24x+wmwqPyDNpWb3EHir39uft0L58kBNXwZ+N9go7TqYZEYu5IIRaREVMaDxynX0Ow1wIbrFPGPo6P+QoL32EGxy8SNRrcxo8P3tANq5dcfwZjdWMOdgFqKVxebjDsH/aq0bpq912WO2QrM6MzOoHdSp/mHZVH8ZRT92mo9jNUB9y4B1bLSjCkI="
+install:
+  - pip install -r requirements.txt
+script:
+  - invoke --list
+after_success:
+  - bash publish.sh
