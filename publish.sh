@@ -12,8 +12,9 @@ git config --global user.email "hm9599@gmail.com"
 git clone -b gh-pages ${GH_URL} publish
 
 cd publish
-git rm -rf .
+git rm -rf --quiet .
 cp -r ../output/* .
+ls -AF --color .
 
 git add -A .
 git commit -m "${COMMIT_MSG}"
