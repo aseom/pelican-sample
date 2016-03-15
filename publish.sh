@@ -1,5 +1,6 @@
-#!/bin/bash
-set -ev
+#!/usr/bin/env bash
+set -o errexit
+set -o xtrace
 
 GH_URL="https://${GH_TOKEN}@github.com/aseom/pelican-test.git"
 COMMIT_MSG="Publish travis build #${TRAVIS_BUILD_NUMBER}"
@@ -10,7 +11,7 @@ if [ "${TRAVIS_BRANCH}" == "master" ]; then
     git clone -b gh-pages ${GH_URL} publish
 
     cd publish
-    echo "Test!" > dummyfile
+    echo "Test!" > dummyfile2
 
     git add -A .
     git status
