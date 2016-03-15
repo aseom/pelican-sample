@@ -11,5 +11,4 @@ install:
   - pip install -r requirements.txt
 script:
   - invoke --list
-after_success:
-  - bash publish.sh
+  - ./publish.sh
