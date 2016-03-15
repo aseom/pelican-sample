@@ -17,5 +17,5 @@ cp -r ../output/* .
 echo "#${TRAVIS_BUILD_NUMBER}" > .travis_build
 
 git add -A .
-git commit --author"aseom <hm9599@gmail.com>" -m "${COMMIT_MSG}"
+git commit --author="aseom <hm9599@gmail.com>" -m "${COMMIT_MSG}"
 git push origin gh-pages
