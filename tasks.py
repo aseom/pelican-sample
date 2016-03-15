@@ -1,8 +1,9 @@
 import os
+import sys
 import time
 import threading
 import webbrowser
-from subprocess import Popen, CREATE_NEW_CONSOLE
+from subprocess import Popen
 from invoke import task, run
 
 @task
@@ -20,7 +21,11 @@ def serve():
     """Serve site at localhost:8000"""
     os.chdir('output')
     print("Starting server in new window...")
-    Popen('python -m http.server 8000', creationflags=CREATE_NEW_CONSOLE)
+    if sys.platform == "win32":
+        from subprocess import CREATE_NEW_CONSOLE
+        Popen('python -m http.server 8000', creationflags=CREATE_NEW_CONSOLE)
+    else:
+        Popen('python -m http.server 8000', shell=True)
 
 @task
 def preview():
