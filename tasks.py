@@ -9,16 +9,16 @@ if os.environ.get('TRAVIS'):
         Raise execption is nonzero exit
         """
         print('*** Start publish...')
-        check_call('pelican -s publishconf.py -o output')
+        check_call('pelican -s publishconf.py -o output', shell=True)
         print('*** Start deploy...')
-        check_call('chmod +x deploy.sh && ./deploy.sh')
+        check_call('chmod +x deploy.sh && ./deploy.sh', shell=True)
 
 @task
 def watch():
     """Auto regenerate site"""
     # Don't create '__pycache__'
     os.environ['PYTHONDONTWRITEBYTECODE'] = 'true'
-    check_call('pelican -s pelicanconf.py -o output --autoreload')
+    check_call('pelican -s pelicanconf.py -o output --autoreload', shell=True)
 
 @task
 def serve():
@@ -26,7 +26,8 @@ def serve():
     os.chdir('output')
     print("Starting server in new window...")
     from subprocess import CREATE_NEW_CONSOLE # Windows only
-    Popen('python -m http.server 8000', creationflags=CREATE_NEW_CONSOLE)
+    Popen('python -m http.server 8000',
+          shell=True, creationflags=CREATE_NEW_CONSOLE)
 
 @task
 def preview():
