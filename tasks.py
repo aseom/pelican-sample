@@ -26,8 +26,7 @@ def serve():
     os.chdir('output')
     print("Starting server in new window...")
     from subprocess import CREATE_NEW_CONSOLE # Windows only
-    Popen('python -m http.server 8000',
-          shell=True, creationflags=CREATE_NEW_CONSOLE)
+    Popen('python -m http.server 8000', creationflags=CREATE_NEW_CONSOLE)
 
 @task
 def preview():
