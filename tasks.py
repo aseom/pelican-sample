@@ -8,9 +8,9 @@ if os.environ.get('TRAVIS'):
         """Deploy via Travis CI
         Raise execption is nonzero exit
         """
-        print('*** Start publish...')
+        print("\033[33m*** Start publish...\n\033[0m")
         check_call('pelican -s publishconf.py -o output', shell=True)
-        print('*** Start deploy...')
+        print('\033[33m*** Start deploy...\n\033[0m')
         check_call('chmod +x deploy.sh && ./deploy.sh', shell=True)
 
 @task
