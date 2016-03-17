@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-SITEURL = 'https://aseom.github.io/pelican-sample'
+SITEURL = '//aseom.github.io/pelican-sample'
 
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
