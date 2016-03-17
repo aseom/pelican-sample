@@ -1,5 +1,5 @@
-__pycache__
+/output
 .venv
+*.py[cod]
 *.sublime-project
 *.sublime-workspace
-/output

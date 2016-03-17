@@ -1,16 +1,13 @@
 language: python
 python:
   - 3.4
-git:
-  depth: 5
 branches:
   only:
     - master
-env:
-  global:
-    - secure: "Cs4NcG7zDsbz4ZkUHyWP3WPfF70jx8TCjbGyp4Dm6vI+Al5ZFV6DSFrb2VT4AkwB9MZjkCkIEdhssk/tkCfq6oHBkYpuO27RFgHUyJ6vz4EdvB1LP2ZaJpmzKNm8wEtlC92c0yYcxX7PForGJ5g7pgFi2HY4yfFfrUmielZJns5v6HzfGTuRNhprv/4foTnckrJA0oICsnsFQhlaOuUI7naJJYKBWVs2PaeWfdv3tTC6qSJx/lmhNlyhMxScUhWl1kuElf1sPE+q7GlTIwq7ARkBr7hkJubhYJrGkxd//otN6RBIVv3A0YSufe4wKL6stt4utsCI9YRDvOrN0X+m0bdNdEBKR53GRP3dDltP+bh8VvnltIpoPEYGXTxAm9TZNuBhWU8A3Xso2zpWhFvoE9vmAJc0dmQ+URzQk+kjJqL4L9mON+rrtk7SRE8DHsDKUEOOlrOvKZl61CEkjAvFAQyqxcxPM8y3xvul1++CTnUlko29988BdJFef9UuIJ/C8fUNr3hSXDWpb8GxJsoyzK1X8iLztdU3KaTsGchcSCvOy7L7NVVJ9Z8Zz90PMNmqofOk9dXS9x5LtH5vT3mojpRd1X5nIcFHlg+EPlNB82sixiWVfgiBF3/dzrfaPC1zq46R8JfY9M52fQst0Uprl9v04I6vSAG3ct5j8W4RFFY="
+git:
+  depth: 5
+
 install:
   - pip install -r requirements.txt
 script:
-  - invoke build
-  - bash publish.sh
+  - invoke travis

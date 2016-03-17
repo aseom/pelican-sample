@@ -1,38 +1,46 @@
+from invoke import task
+from subprocess import check_call, Popen
 import os
-import sys
-import time
-import threading
-import webbrowser
-from subprocess import Popen
-from invoke import task, run
 
-@task
-def build():
-    """Build for publish"""
-    run('pelican -s publishconf.py -o output')
+if os.environ.get('TRAVIS'):
+    @task
+    def travis():
+        """Deploy via Travis CI
+        Raise execption is nonzero exit
+        """
+        print('*** Start publish...')
+        check_call('pelican -s publishconf.py -o output')
+        print('*** Start deploy...')
+        check_call('chmod +x deploy.sh && ./deploy.sh')
 
 @task
 def watch():
     """Auto regenerate site"""
-    Popen('pelican -s pelicanconf.py -o output -r').wait()
+    # Don't create '__pycache__'
+    os.environ['PYTHONDONTWRITEBYTECODE'] = 'true'
+    check_call('pelican -s pelicanconf.py -o output --autoreload')
 
 @task
 def serve():
     """Serve site at localhost:8000"""
     os.chdir('output')
     print("Starting server in new window...")
-    if sys.platform == "win32":
-        from subprocess import CREATE_NEW_CONSOLE
-        Popen('python -m http.server 8000', creationflags=CREATE_NEW_CONSOLE)
-    else:
-        Popen('python -m http.server 8000', shell=True)
+    from subprocess import CREATE_NEW_CONSOLE # Windows only
+    Popen('python -m http.server 8000', creationflags=CREATE_NEW_CONSOLE)
 
 @task
 def preview():
     """Run for local preview"""
+    import time
+    import threading
+    import webbrowser
+
     threading.Thread(target=watch).start()
-    time.sleep(0.5)
+
+    # Prevent 'output' dir not found
+    while not os.path.exists('output'):
+        time.sleep(0.1) 
     serve()
-    
+
     time.sleep(1.0)
     webbrowser.open('http://localhost:8000/')
