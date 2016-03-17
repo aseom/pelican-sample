@@ -11,8 +11,8 @@ if [ "${TRAVIS_BRANCH}" != "master" ]; then exit 1; fi
 
 git config --global user.name "aseom-travis"
 git config --global user.email "hm9599@gmail.com"
-git config --global credential.helper "store --file=~/.git-credentials"
-echo "https://${GH_TOKEN}:@github.com" > ~/.git-credentials
+git config --global credential.helper "store --file=.git/credentials"
+echo "https://${GH_TOKEN}:@github.com" > .git/credentials
     
 git clone --depth=5 --branch=${DEPLOY_BRANCH} https://github.com/${DEPLOY_REPO}.git deploy
 cd deploy
