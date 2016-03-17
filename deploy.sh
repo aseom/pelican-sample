@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -o errexit
+set -o nounset
 set -o verbose
 
 PUBLISH_REPO="https://${GH_TOKEN}@github.com/aseom/pelican-sample.git"
