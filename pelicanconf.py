@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'ASeom Han'
-SITENAME = 'pelican-aseom'
+SITENAME = 'pelican-sample'
 SITEURL = ''
 
 PATH = 'content'
