@@ -12,7 +12,7 @@ if [ "${TRAVIS_BRANCH}" != "master" ]; then exit 1; fi
 # Add ssh private key for deploy
 openssl aes-256-cbc -d -in deploy_key.enc -out deploy_key -K ${DEPLOY_KEY_K} -iv ${DEPLOY_KEY_IV}
 chmod 600 deploy_key
-eval "ssh-agent -s"
+eval "$(ssh-agent -s)"
 ssh-add deploy_key
 
 # Clone deploy branch    
